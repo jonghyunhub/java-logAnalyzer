@@ -29,7 +29,9 @@ public class LogFileReader {
                 if ((char) i == '\r') { //로그 마지막
                     logLineList.add(stringBuilder.toString());
                     stringBuilder.setLength(0); //스트링빌더 초기화
-                } else { //로그 마지막 아님
+                } else if ((char) i == '\n') { // 개행문자 스킵
+                }
+                else { //로그 마지막 아님
                     stringBuilder.append((char) i);
                 }
             }
