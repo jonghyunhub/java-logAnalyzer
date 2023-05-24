@@ -24,7 +24,7 @@ public class LogParser {
 
 
     /**
-     * 로그 텍스트 로그 도메인 객체로 파싱
+     * 로그 텍스트 로그 도메인 객체로 파싱 - 이 로직 static 매서드로 Log 도메인안에 넣어야하나 고민됨
      * @param logText
      * @return Log
      */
@@ -43,7 +43,7 @@ public class LogParser {
             Log log = new Log(status, url, browser, timestamp);
             return log;
         } else {
-            System.out.println("No match found.");
+//            System.out.println("No match found.");
         }
 
         return null;
