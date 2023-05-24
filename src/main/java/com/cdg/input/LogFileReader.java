@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LogReader {
+public class LogFileReader {
 
     /**
      * 로그 파일 읽어서 로그 한줄씩 ArrayList 에 담아줌
@@ -26,7 +26,7 @@ public class LogReader {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                if ((char) i == '\n') { //로그 마지막
+                if ((char) i == '\r') { //로그 마지막
                     logLineList.add(stringBuilder.toString());
                     stringBuilder.setLength(0); //스트링빌더 초기화
                 } else { //로그 마지막 아님
