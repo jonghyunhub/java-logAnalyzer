@@ -1,7 +1,7 @@
 package com.cdg;
 
 import com.cdg.helper.LogParser;
-import com.cdg.input.LogFileReader;
+import com.cdg.io.LogFileReader;
 import com.cdg.service.LogAnalyzer;
 import com.cdg.statistic.LogDataAggregator;
 

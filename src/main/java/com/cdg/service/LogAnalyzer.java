@@ -2,7 +2,7 @@ package com.cdg.service;
 
 import com.cdg.domain.Log;
 import com.cdg.helper.LogParser;
-import com.cdg.input.LogFileReader;
+import com.cdg.io.LogFileReader;
 import com.cdg.statistic.LogDataAggregator;
 
 import java.util.ArrayList;
@@ -33,6 +33,10 @@ public class LogAnalyzer {
                 logDataList.add(result);
             }
         }
+
+        LogDataAggregator logDataAggregator = new LogDataAggregator();
+        String s = logDataAggregator.aggregateApiKey(logDataList);
+        System.out.println("s = " + s);
 
 
     }

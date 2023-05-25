@@ -1,4 +1,4 @@
-package com.cdg.input;
+package com.cdg.io;
 
 import java.io.File;
 import java.io.FileInputStream;

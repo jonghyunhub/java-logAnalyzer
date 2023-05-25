@@ -1,6 +1,6 @@
-package com.cdg;
+package com.cdg.DataType;
 
-public enum StatusCode {
+public enum StatusCodeType {
 
     INVALID_PARM(10),
     OK(200),
@@ -9,7 +9,7 @@ public enum StatusCode {
 
     private Integer value;
 
-    StatusCode(Integer value) {
+    StatusCodeType(Integer value) {
         this.value = value;
     }
 
