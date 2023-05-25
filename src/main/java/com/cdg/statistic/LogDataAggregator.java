@@ -2,7 +2,6 @@ package com.cdg.statistic;
 
 import com.cdg.domain.Log;
 import com.cdg.domain.ServiceIdType;
-import com.cdg.domain.StatusCodeType;
 import com.cdg.storage.LogDataCollector;
 
 import java.time.LocalDateTime;
