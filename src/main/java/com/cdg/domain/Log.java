@@ -11,7 +11,8 @@ public class Log {
     private String timestamp;
 
     public Log(String statusCode, String url, String browser, String timestamp) {
-        this.statusCode = statusCode;
+
+        this.statusCode = StatusCodeType.checkCodeInType(statusCode);
         this.url = url;
         this.browser = browser;
         this.timestamp = timestamp;

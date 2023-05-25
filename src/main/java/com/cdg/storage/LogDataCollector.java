@@ -1,5 +1,7 @@
 package com.cdg.storage;
 
+import com.cdg.domain.StatusCodeType;
+
 import java.util.HashMap;
 import java.util.Map;
 

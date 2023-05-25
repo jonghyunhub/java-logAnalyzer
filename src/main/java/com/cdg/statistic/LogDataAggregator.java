@@ -1,11 +1,12 @@
 package com.cdg.statistic;
 
 import com.cdg.domain.Log;
+import com.cdg.domain.ServiceIdType;
+import com.cdg.domain.StatusCodeType;
 import com.cdg.storage.LogDataCollector;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -31,7 +32,6 @@ public class LogDataAggregator {
             aggregateApiKey(log,logDataCollector); // 최다 호출 apiKey 집계
 
         }
-        System.out.println("hi");
 
     }
 
@@ -39,7 +39,6 @@ public class LogDataAggregator {
     /**
      * ApiKey 호출 횟수 집계
      * @param log
-     * @return
      */
     private void aggregateApiKey(Log log,LogDataCollector logDataCollector) {
 
@@ -66,10 +65,8 @@ public class LogDataAggregator {
      */
     private void aggregateStatusCode(Log log,  Map<String, Integer> statusCodeCalledNumMap) {
 
-        System.out.println(log.getStatusCode());
 
         statusCodeCalledNumMap.put(log.getStatusCode(), statusCodeCalledNumMap.getOrDefault(log.getStatusCode(), 0) + 1);
-
 
 
     }
@@ -88,7 +85,10 @@ public class LogDataAggregator {
 
         String outputString = apiUrl[1].split("/search/")[1];
 
-        getServiceIdCalledNumMap.put(outputString, getServiceIdCalledNumMap.getOrDefault(outputString, 0) + 1);
+        if (ServiceIdType.checkCodeInType(outputString)!= null) {
+            getServiceIdCalledNumMap.put(outputString, getServiceIdCalledNumMap.getOrDefault(outputString, 0) + 1);
+        }
+
 
     }
 

@@ -41,10 +41,21 @@ public class ResultPrinter {
                     .append("\n\n")
                     .append("웹 브라우저 별 사용비율\n\n");
 
-
-            for (Map.Entry<String, Integer> entry : browserNumMap.entrySet()) {
-                stringBuilder.append(entry.getKey() + " : " + entry.getValue() + "\n");
+            int sum = 0;
+            for (Integer value : browserNumMap.values()) {
+                sum += value;
             }
+
+            for (String key : browserNumMap.keySet()) {
+                int value = browserNumMap.get(key);
+                double percentage = ((double) value / sum) * 100;
+                stringBuilder.append(key).append(": ").append(String.format("%.2f%%", percentage)).append("\n");
+            }
+
+
+//            for (Map.Entry<String, Integer> entry : browserNumMap.entrySet()) {
+//                stringBuilder.append(entry.getKey() + " : " + entry.getValue() + "\n");
+//            }
 
 
 
