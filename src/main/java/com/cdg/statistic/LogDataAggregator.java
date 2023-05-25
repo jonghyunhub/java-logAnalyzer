@@ -19,15 +19,17 @@ public class LogDataAggregator {
     public void aggregateLog(List<Log> logList, LogDataCollector logDataCollector) {
 
         for (Log log : logList) {
-            aggregateApiKey(log,logDataCollector); // 최다 호출 apiKey 집계
 
-            aggregateStatusCode(log, logDataCollector.getStatusCodeCalledNumMap()); //상태 코드 호출 횟수 집계
-
-            aggregateServiceId(log, logDataCollector.getServiceIdCalledNumMap()); //서비스 id 호출 횟수 집계
+            aggregateBrowserPercentage(log, logDataCollector.getBrowserNumMap()); //브라우저 호출 횟수 집계
 
             aggregatePeekTime(log, logDataCollector); // 피크 시간 집계
 
-            aggregateBrowserPercentage(log, logDataCollector.getBrowserNumMap()); //브라우저 호출 횟수 집계
+            aggregateServiceId(log, logDataCollector.getServiceIdCalledNumMap()); //서비스 id 호출 횟수 집계
+
+            aggregateStatusCode(log, logDataCollector.getStatusCodeCalledNumMap()); //상태 코드 호출 횟수 집계
+
+            aggregateApiKey(log,logDataCollector); // 최다 호출 apiKey 집계
+
         }
         System.out.println("hi");
 
@@ -64,6 +66,7 @@ public class LogDataAggregator {
      */
     private void aggregateStatusCode(Log log,  Map<String, Integer> statusCodeCalledNumMap) {
 
+        System.out.println(log.getStatusCode());
 
         statusCodeCalledNumMap.put(log.getStatusCode(), statusCodeCalledNumMap.getOrDefault(log.getStatusCode(), 0) + 1);
 

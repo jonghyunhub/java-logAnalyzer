@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class LogParser {
 
-    private final String regex = "\\[(\\d{3})\\]\\[(.*?)\\]\\[(.*?)\\]\\[(.*?)\\]";
+    private final String regex = "\\[(\\d{2,3})\\]\\[(.*?)\\]\\[(.*?)\\]\\[(.*?)\\]";
 //    "\\[(\\d{3})\\]\\[(.*?)\\]\\[(.*?)\\]\\[(.*?)\\]";
 
 //    다음과 같은 정규식을 사용하여 일치하는 문자열을 찾을 수 있습니다.

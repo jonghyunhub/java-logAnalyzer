@@ -3,6 +3,7 @@ package com.cdg.service;
 import com.cdg.domain.Log;
 import com.cdg.helper.LogParser;
 import com.cdg.io.LogFileReader;
+import com.cdg.io.ResultPrinter;
 import com.cdg.statistic.LogDataAggregator;
 import com.cdg.storage.LogDataCollector;
 
@@ -22,12 +23,15 @@ public class LogAnalyzer {
 
     private final LogDataCollector logDataCollector;
 
+    private final ResultPrinter resultPrinter;
 
-    public LogAnalyzer(LogFileReader logFileReader, LogParser logParser, LogDataAggregator logDataAggregator, LogDataCollector logDataCollector) {
+
+    public LogAnalyzer(LogFileReader logFileReader, LogParser logParser, LogDataAggregator logDataAggregator, LogDataCollector logDataCollector, ResultPrinter resultPrinter) {
         this.logFileReader = logFileReader;
         this.logParser = logParser;
         this.logDataAggregator = logDataAggregator;
         this.logDataCollector = logDataCollector;
+        this.resultPrinter = resultPrinter;
     }
 
     public void start() {
@@ -46,6 +50,6 @@ public class LogAnalyzer {
         logDataAggregator.aggregateLog(logDataList, logDataCollector);
 
 
-
+        resultPrinter.printLog(logDataCollector);
     }
 }
