@@ -20,8 +20,6 @@ public class LogParser {
     //    \[(.*?)\]: 대괄호 안에 문자열(예를 들어 'Mozilla Firefox')이 있어야 하며 이 문자열은 해당 인덱스의 그룹으로 캡처됩니다.
     //    \[(.*?)\]: 대괄호 안에 문자열(예를 들어 '2019-01-01 00:00:00')이 있어야 하며 이 문자열은 해당 인덱스의 그룹으로 캡처됩니다.
 
-    //    정규식은 챗 gpt 형님의 힘을 빌렸습니다. ㅋㅋ
-
 
     /**
      * 로그 텍스트 로그 도메인 객체로 파싱 - 이 로직 static 매서드로 Log 도메인안에 넣어야하나 고민됨
@@ -42,12 +40,11 @@ public class LogParser {
 
             Log log = new Log(status, url, browser, timestamp);
             return log;
-        } else {
-//            System.out.println("No match found.");
-        }
+        } else {}
 
         return null;
     }
+
 
 
 }
