@@ -13,9 +13,9 @@ public class LogFileReader {
      * 로그 파일 읽어서 로그 한줄씩 ArrayList 에 담아줌
      * @return logLineList
      */
-    public List<String> readLog() {
+    public List<String> readLog(String fileUrl) {
         try {
-            File file = new File("src/main/resources/log/input.log");
+            File file = new File(fileUrl);
             InputStream inputStream = new FileInputStream(file);
             List<String> logLineList = new ArrayList<>();
             StringBuilder stringBuilder = new StringBuilder();

@@ -36,7 +36,7 @@ public class LogAnalyzer {
 
     public void start() {
 
-        List<String> logTextList = logFileReader.readLog();
+        List<String> logTextList = logFileReader.readLog("src/main/resources/log/input.log");
 
         List<Log> logDataList = new ArrayList<>();
 
@@ -50,6 +50,6 @@ public class LogAnalyzer {
         logDataAggregator.aggregateLog(logDataList, logDataCollector);
 
 
-        resultPrinter.printLog(logDataCollector);
+        resultPrinter.startPrint(logDataCollector);
     }
 }
