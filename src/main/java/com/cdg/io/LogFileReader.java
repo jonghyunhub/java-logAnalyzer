@@ -11,7 +11,7 @@ public class LogFileReader {
      * @return logLineList
      */
     public List<String> readLog(String fileUrl) {
-        
+
         try (BufferedReader br = new BufferedReader(new FileReader(fileUrl))) {
             List<String> logLineList = new ArrayList<>();
             String line;
@@ -24,6 +24,5 @@ public class LogFileReader {
             return null;
         }
     }
-
 
 }

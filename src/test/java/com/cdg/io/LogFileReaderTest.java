@@ -39,10 +39,10 @@ class LogFileReaderTest {
 
     @ParameterizedTest
     @ValueSource(strings = {
-            "@AfterEach\n",
-                    "    public void tearDown() {\n",
-                    "        logFileReader = null;\n",
-                    "        resultPrinter = null;\n",
+            "@AfterEach",
+                    "    public void tearDown() {",
+                    "        logFileReader = null;",
+                    "        resultPrinter = null;",
                     "    }"
     })
     public void readLog은_로그파일의_모든_줄을_읽어서_리스트에_넣어야_함(String logText) {
