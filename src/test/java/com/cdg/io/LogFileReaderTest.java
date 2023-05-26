@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.io.File;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 
 
@@ -17,6 +17,8 @@ class LogFileReaderTest {
     LogFileReader logFileReader;
 
     ResultPrinter resultPrinter;
+
+    private final String testLogPath = "src/test/resources/test.log";
 
     /**
      * test.log 파일에 테스트 문구 작성
@@ -29,7 +31,24 @@ class LogFileReaderTest {
                 "    public void tearDown() {\n" +
                 "        logFileReader = null;\n" +
                 "        resultPrinter = null;\n" +
-                "    }", "src/test/resources/test.log");
+                "    }", testLogPath);
+    }
+
+
+
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "@AfterEach\n",
+                    "    public void tearDown() {\n",
+                    "        logFileReader = null;\n",
+                    "        resultPrinter = null;\n",
+                    "    }"
+    })
+    public void readLog은_로그파일의_모든_줄을_읽어서_리스트에_넣어야_함(String logText) {
+        List<String> readLog = logFileReader.readLog(testLogPath);
+
+        assertThat(readLog.contains(logText)).isTrue();
     }
 
 
@@ -41,24 +60,9 @@ class LogFileReaderTest {
         logFileReader = null;
         resultPrinter = null;
 
-        String path = "src/test/resources/test.log";
-        File file = new File(path);
+        File file = new File(testLogPath);
 
         file.delete();
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {
-            "@AfterEach\n" +
-                    "    public void tearDown() {\n" +
-                    "        logFileReader = null;\n" +
-                    "        resultPrinter = null;\n" +
-                    "    }"
-    })
-    public void readLog은_로그파일의_모든_줄을_읽어서_리스트에_넣어야_함(String logText) {
-        List<String> readLog = logFileReader.readLog("src/test/resources/test.log");
-
-//        assertThat(readLog.contains(logText)).isTrue();
     }
 
 
