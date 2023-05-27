@@ -18,7 +18,7 @@ class LogFileReaderTest {
 
     ResultPrinter resultPrinter;
 
-    private final String testLogPath = "src/test/resources/log/test.log";
+    private static final String TEST_LOG_PATH = "src/test/resources/log/test.log";
 
     private String testString =  "@AfterEach\n" +
             "    public void tearDown() {\n" +
@@ -33,7 +33,7 @@ class LogFileReaderTest {
     public void setUp() {
         logFileReader = new LogFileReader();
         resultPrinter = new ResultPrinter();
-        resultPrinter.printLog(testString, testLogPath);
+        resultPrinter.printLog(testString, TEST_LOG_PATH);
     }
 
 
@@ -48,7 +48,7 @@ class LogFileReaderTest {
                     "    }"
     })
     public void readLog은_로그파일의_모든_줄을_읽어서_리스트에_넣어야_함(String logText) {
-        List<String> readLog = logFileReader.readLog(testLogPath);
+        List<String> readLog = logFileReader.readLog(TEST_LOG_PATH);
 
         assertThat(readLog.contains(logText)).isTrue();
     }
@@ -62,7 +62,7 @@ class LogFileReaderTest {
         logFileReader = null;
         resultPrinter = null;
 
-        File file = new File(testLogPath);
+        File file = new File(TEST_LOG_PATH);
 
         file.delete();
     }

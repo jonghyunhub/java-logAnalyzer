@@ -34,6 +34,7 @@ class LogAnalyzerTest {
 
     @AfterEach
     void tearDown() {
+        logAnalyzer = null;
     }
 
     @Test

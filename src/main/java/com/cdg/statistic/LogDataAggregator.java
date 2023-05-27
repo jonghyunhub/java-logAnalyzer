@@ -14,8 +14,6 @@ import java.util.regex.Pattern;
 public class LogDataAggregator {
 
 
-
-
     public void aggregateLog(List<Log> logList, LogDataCollector logDataCollector) {
 
         for (Log log : logList) {
@@ -39,7 +37,7 @@ public class LogDataAggregator {
      * ApiKey 호출 횟수 집계
      * @param log
      */
-    private void aggregateApiKey(Log log,LogDataCollector logDataCollector) {
+    public void aggregateApiKey(Log log,LogDataCollector logDataCollector) {
 
         Map<String, Integer> apiKeyCalledNumMap = logDataCollector.getApiKeyCalledNumMap();
 
@@ -53,7 +51,7 @@ public class LogDataAggregator {
         }
 
 
-        logDataCollector.setMaxCalledApiKey( findMaxKey(apiKeyCalledNumMap));
+        logDataCollector.setMaxCalledApiKey(findMaxKey(apiKeyCalledNumMap));
     }
 
 
@@ -62,7 +60,7 @@ public class LogDataAggregator {
      * @param log
      * @param statusCodeCalledNumMap
      */
-    private void aggregateStatusCode(Log log,  Map<String, Integer> statusCodeCalledNumMap) {
+    public void aggregateStatusCode(Log log,  Map<String, Integer> statusCodeCalledNumMap) {
 
 
         statusCodeCalledNumMap.put(log.getStatusCode(), statusCodeCalledNumMap.getOrDefault(log.getStatusCode(), 0) + 1);
@@ -76,7 +74,7 @@ public class LogDataAggregator {
      * @param log
      * @param getServiceIdCalledNumMap
      */
-    private void aggregateServiceId(Log log, Map<String, Integer> getServiceIdCalledNumMap) {
+    public void aggregateServiceId(Log log, Map<String, Integer> getServiceIdCalledNumMap) {
 
 
         String[] splitString = log.getUrl().split("\\?");
@@ -97,7 +95,7 @@ public class LogDataAggregator {
      * @param log
      * @param logDataCollector
      */
-    private void aggregatePeekTime(Log log, LogDataCollector logDataCollector) {
+    public void aggregatePeekTime(Log log, LogDataCollector logDataCollector) {
 
         Map<String, Integer> peekTimeNumMap = logDataCollector.getPeekTimeNumMap();
 
@@ -123,7 +121,7 @@ public class LogDataAggregator {
      * @param log
      * @param statusCodeCalledNumMap
      */
-    private void aggregateBrowserPercentage(Log log,  Map<String, Integer> statusCodeCalledNumMap) {
+    public void aggregateBrowserPercentage(Log log,  Map<String, Integer> statusCodeCalledNumMap) {
 
         statusCodeCalledNumMap.put(log.getBrowser(), statusCodeCalledNumMap.getOrDefault(log.getBrowser(), 0) + 1);
 
@@ -132,7 +130,7 @@ public class LogDataAggregator {
 
     /**
      * Map 안의 value 가 가장 큰 key 찾기
-     * @return
+     * @return maxKey
      */
     private String findMaxKey(Map<String, Integer> map) {
         String maxKey = null;
