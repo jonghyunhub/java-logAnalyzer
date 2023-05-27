@@ -1,5 +1,6 @@
 package com.cdg.io;
 
+import com.cdg.domain.ServiceIdType;
 import com.cdg.storage.LogDataCollector;
 
 import java.io.FileWriter;
