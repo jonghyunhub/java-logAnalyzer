@@ -18,7 +18,13 @@ class LogFileReaderTest {
 
     ResultPrinter resultPrinter;
 
-    private final String testLogPath = "src/test/resources/test.log";
+    private final String testLogPath = "src/test/resources/log/test.log";
+
+    private String testString =  "@AfterEach\n" +
+            "    public void tearDown() {\n" +
+            "        logFileReader = null;\n" +
+            "        resultPrinter = null;\n" +
+            "    }";
 
     /**
      * test.log 파일에 테스트 문구 작성
@@ -27,11 +33,7 @@ class LogFileReaderTest {
     public void setUp() {
         logFileReader = new LogFileReader();
         resultPrinter = new ResultPrinter();
-        resultPrinter.printLog("@AfterEach\n" +
-                "    public void tearDown() {\n" +
-                "        logFileReader = null;\n" +
-                "        resultPrinter = null;\n" +
-                "    }", testLogPath);
+        resultPrinter.printLog(testString, testLogPath);
     }
 
 

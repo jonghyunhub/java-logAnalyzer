@@ -1,5 +1,7 @@
 package com.cdg.domain;
 
+import java.util.Objects;
+
 public class Log {
 
     private String statusCode;
@@ -32,5 +34,19 @@ public class Log {
 
     public String getTimestamp() {
         return timestamp;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Log log = (Log) o;
+        return Objects.equals(statusCode, log.statusCode) && Objects.equals(url, log.url) && Objects.equals(browser, log.browser) && Objects.equals(timestamp, log.timestamp);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(statusCode, url, browser, timestamp);
     }
 }
