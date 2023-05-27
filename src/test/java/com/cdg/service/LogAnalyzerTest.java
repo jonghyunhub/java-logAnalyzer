@@ -11,15 +11,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * 통합 테스트
  */
 class LogAnalyzerTest {
 
-    private static final String OUTPUT_LOG = "src/main/resources/log.out.log";
+    private static final String OUTPUT_LOG = "src/main/resources/log/output.log";
 
     private LogAnalyzer logAnalyzer;
+
+    private LogFileReader logFileReader;
 
     @BeforeEach
     void setUp() {
@@ -31,6 +36,8 @@ class LogAnalyzerTest {
                 new LogDataCollector(),
                 new ResultPrinter()
         );
+
+        logFileReader = new LogFileReader();
 
         File file = new File(OUTPUT_LOG);
 
@@ -52,9 +59,23 @@ class LogAnalyzerTest {
 
     @DisplayName("통합 테스트 - out.log 결과물을 체크")
     @Test
-    void start() {
+    void logAnalyzerIntegrateTest() {
 
         logAnalyzer.start();
+
+        List<String> outputData = logFileReader.readLog(OUTPUT_LOG);
+
+        assertThat(outputData.get(2)).isEqualTo("2jdc"); // 최다 호출 api 검증
+
+        assertThat(outputData.get(6)).isEqualTo("200 : 4747"); // 상태코드 별 횟수 검증
+
+        assertThat(outputData.get(13)).isEqualTo("news : 834"); // 상위 3개의 API ServiceID 검증
+
+        assertThat(outputData.get(23)).isEqualTo("2009-06-10 09:52"); // 피크 시간대 검증
+
+        assertThat(outputData.get(27)).isEqualTo("Safari: 2.04%"); // 웹 브라우저 별 사용비율 검증
+
+
 
 
     }
