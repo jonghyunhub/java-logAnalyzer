@@ -6,14 +6,11 @@ import com.cdg.io.ResultPrinter;
 import com.cdg.statistic.LogDataAggregator;
 import com.cdg.storage.LogDataCollector;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
- * 통합테스트
+ * 통합 테스트
  */
 class LogAnalyzerTest {
 

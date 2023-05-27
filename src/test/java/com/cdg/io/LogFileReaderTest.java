@@ -2,13 +2,14 @@ package com.cdg.io;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.File;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 
@@ -38,7 +39,7 @@ class LogFileReaderTest {
 
 
 
-
+    @DisplayName("로그 파일을 한줄씩 읽어서 String으로 변환 테스트")
     @ParameterizedTest
     @ValueSource(strings = {
             "@AfterEach",

@@ -6,6 +6,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
+/**
+ * 로그 객체 자동 생성 객체
+ */
 public class LogGenerator {
 
     private static final String[] STATUS_CODES = {"200", "10" ,"404"};

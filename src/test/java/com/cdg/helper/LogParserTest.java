@@ -4,6 +4,7 @@ import com.cdg.domain.Log;
 import com.cdg.io.LogFileReader;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -38,6 +39,7 @@ class LogParserTest {
         readLog = null;
     }
 
+    @DisplayName("텍스트 파일 로그 객체로 파싱")
     @ParameterizedTest
     @CsvSource(value = {"200,http://apis.cdg.com/search/knowledge?apikey=23jf&q=cdg,IE,2009-06-10 08:00:00",
             "10,http://apis.cdg.com/search/book?q=cdg,IE,2009-06-10 08:02:01",

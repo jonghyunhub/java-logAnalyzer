@@ -132,7 +132,7 @@ public class LogDataAggregator {
      * Map 안의 value 가 가장 큰 key 찾기
      * @return maxKey
      */
-    private String findMaxKey(Map<String, Integer> map) {
+    public String findMaxKey(Map<String, Integer> map) {
         String maxKey = null;
         int maxValue = Integer.MIN_VALUE;
 

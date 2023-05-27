@@ -11,7 +11,6 @@ public class ResultPrinter {
 
     private static final String FILENAME = "src/main/resources/log/output.log";
 
-
     /**
      * 로그 출력 시작
      * @param logDataCollector
